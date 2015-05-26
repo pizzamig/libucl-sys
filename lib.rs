@@ -2,6 +2,7 @@
 #![allow(raw_pointer_derive)]
 
 extern crate libc;
+#[macro_use] extern crate bitflags;
 extern crate curl_sys;
 
 use libc::{
@@ -53,40 +54,46 @@ pub enum ucl_emitter {
     UCL_EMIT_YAML
 }
 
+bitflags! {
 #[repr(C)]
-#[derive(Clone, Copy)]
-pub enum ucl_parser_flags_t {
-    UCL_PARSER_DEFAULT = 0x0,
-    UCL_PARSER_KEY_LOWERCASE = 0x1,
-    UCL_PARSER_ZEROCOPY = 0x2,
-    UCL_PARSER_NO_TIME = 0x4,
-    UCL_PARSER_NO_IMPLICIT_ARRAYS = 0x8
+    flags ucl_parser_flags_t: c_int {
+        const UCL_PARSER_DEFAULT = 0x0,
+        const UCL_PARSER_KEY_LOWERCASE = 0x1,
+        const UCL_PARSER_ZEROCOPY = 0x2,
+        const UCL_PARSER_NO_TIME = 0x4,
+        const UCL_PARSER_NO_IMPLICIT_ARRAYS = 0x8
+    }
 }
 
+bitflags! {
 #[repr(C)]
-#[derive(Clone, Copy)]
-pub enum ucl_string_flags_t {
-    UCL_STRING_RAW = 0x0,
-    UCL_STRING_ESCAPE = 0x1,
-    UCL_STRING_TRIM = 0x2,
-    UCL_STRING_PARSE_BOOLEAN = 0x4,
-    UCL_STRING_PARSE_INT = 0x8,
-    UCL_STRING_PARSE_DOUBLE = 0x10,
-    UCL_STRING_PARSE_TIME = 0x20,
-    UCL_STRING_PARSE_NUMBER =  0x8|0x10|0x20,
-    UCL_STRING_PARSE =  0x4|0x8|0x10|0x20,
-    UCL_STRING_PARSE_BYTES = 0x40
+    flags ucl_string_flags_t : c_int {
+        const UCL_STRING_RAW = 0x0,
+        const UCL_STRING_ESCAPE = 0x1,
+        const UCL_STRING_TRIM = 0x2,
+        const UCL_STRING_PARSE_BOOLEAN = 0x4,
+        const UCL_STRING_PARSE_INT = 0x8,
+        const UCL_STRING_PARSE_DOUBLE = 0x10,
+        const UCL_STRING_PARSE_TIME = 0x20,
+        const UCL_STRING_PARSE_NUMBER = UCL_STRING_PARSE_INT.bits
+            | UCL_STRING_PARSE_DOUBLE.bits
+            | UCL_STRING_PARSE_TIME.bits,
+        const UCL_STRING_PARSE = UCL_STRING_PARSE_BOOLEAN.bits
+            | UCL_STRING_PARSE_NUMBER.bits,
+        const UCL_STRING_PARSE_BYTES = 0x40
+    }
 }
 
+bitflags! {
 #[repr(C)]
-#[derive(Clone, Copy)]
-pub enum ucl_object_flags_t {
-    UCL_OBJECT_ALLOCATED_KEY = 0x1,
-    UCL_OBJECT_ALLOCATED_VALUE = 0x2,
-    UCL_OBJECT_NEED_KEY_ESCAPE = 0x4,
-    UCL_OBJECT_EPHEMERAL = 0x8,
-    UCL_OBJECT_MULTILINE = 0x10,
-    UCL_OBJECT_MULTIVALUE = 0x20
+    flags ucl_object_flags_t: c_int {
+        const UCL_OBJECT_ALLOCATED_KEY = 0x1,
+        const UCL_OBJECT_ALLOCATED_VALUE = 0x2,
+        const UCL_OBJECT_NEED_KEY_ESCAPE = 0x4,
+        const UCL_OBJECT_EPHEMERAL = 0x8,
+        const UCL_OBJECT_MULTILINE = 0x10,
+        const UCL_OBJECT_MULTIVALUE = 0x20
+    }
 }
 
 #[repr(C)]
