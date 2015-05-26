@@ -1,6 +1,6 @@
 [package]
 name = "libucl-sys"
-version = "0.1.1"
+version = "0.1.2"
 description = "Low-level bindings to libucl."
 authors = ["Łukasz Niemier <lukasz@niemier.pl>"]
 build = "build.rs"

@@ -218,7 +218,7 @@ extern {
     pub fn ucl_object_tostring(obj: *const ucl_object_t) -> *const c_char;
     pub fn ucl_object_tostring_forced(obj: *const ucl_object_t) -> *const c_char;
     pub fn ucl_object_tostring_safe(obj: *const ucl_object_t, target: *mut *const c_char) -> bool;
-    // UCL_EXTERN bool ucl_object_tolstring_safe (const ucl_object_t *obj,
+    pub fn ucl_object_tolstring_safe(obj: *const ucl_object_t, target: *mut *const c_char, len: *mut size_t) -> bool;
 
     // Generation functions
     pub fn ucl_object_new() -> *mut ucl_object_t;
@@ -257,20 +257,20 @@ extern {
     pub fn ucl_array_tail(top: *const ucl_object_t) -> *mut ucl_object_t;
     pub fn ucl_array_pop_last(top: *mut ucl_object_t) -> *mut ucl_object_t;
     pub fn ucl_array_pop_first(top: *mut ucl_object_t) -> *mut ucl_object_t;
-    // UCL_EXTERN const ucl_object_t* ucl_array_find_index (const ucl_object_t *top,
+    pub fn ucl_array_find_index(top: *const ucl_object_t, index: c_usize) -> *const ucl_object_t;
     // UCL_EXTERN unsigned int ucl_array_index_of (ucl_object_t *top,
 
     // Iteration functions
     pub fn ucl_iterate_object(obj: *const ucl_object_t, iter: *mut ucl_object_iter_t, expand_values: bool) -> *const ucl_object_t;
     pub fn ucl_object_iterate_new(obj: *const ucl_object_t) -> ucl_object_iter_t;
-    // UCL_EXTERN ucl_object_iter_t ucl_object_iterate_reset (ucl_object_iter_t it,
-    // UCL_EXTERN const ucl_object_t* ucl_object_iterate_safe (ucl_object_iter_t iter,
+    pub fn ucl_object_iterate_reset(it: ucl_object_iter_t, obj: *const ucl_object_t) -> ucl_object_iter_t;
+    pub fn ucl_object_iterate_safe(iter: ucl_object_iter_t, expand_values: bool) -> *const ucl_object_t;
     pub fn ucl_object_iterate_free(it: ucl_object_iter_t);
 
     // UCL_EXTERN ucl_object_t * ucl_elt_append (ucl_object_t *head,
-    // UCL_EXTERN const ucl_object_t* ucl_object_find_key (const ucl_object_t *obj,
+    pub fn ucl_object_find_key(obj: *const ucl_object_t, key: *const c_char) -> *const ucl_object_t;
     // UCL_EXTERN const ucl_object_t* ucl_object_find_keyl (const ucl_object_t *obj,
-    // UCL_EXTERN const ucl_object_t *ucl_lookup_path (const ucl_object_t *obj,
+    pub fn ucl_lookup_path(obj: *const ucl_object_t, path: *const c_char) -> *const ucl_object_t;
     // UCL_EXTERN const ucl_object_t *ucl_lookup_path_char (const ucl_object_t *obj,
     pub fn ucl_object_key (obj: *const ucl_object_t) -> *const c_char;
     pub fn ucl_object_keyl(obj: *const ucl_object_t, len: *mut size_t) -> *const c_char;
