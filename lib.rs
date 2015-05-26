@@ -257,7 +257,7 @@ extern {
     pub fn ucl_array_tail(top: *const ucl_object_t) -> *mut ucl_object_t;
     pub fn ucl_array_pop_last(top: *mut ucl_object_t) -> *mut ucl_object_t;
     pub fn ucl_array_pop_first(top: *mut ucl_object_t) -> *mut ucl_object_t;
-    pub fn ucl_array_find_index(top: *const ucl_object_t, index: c_usize) -> *const ucl_object_t;
+    pub fn ucl_array_find_index(top: *const ucl_object_t, index: c_uint) -> *const ucl_object_t;
     // UCL_EXTERN unsigned int ucl_array_index_of (ucl_object_t *top,
 
     // Iteration functions
