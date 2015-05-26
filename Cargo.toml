@@ -1,0 +1,16 @@
+[package]
+name = "libucl-sys"
+version = "0.1.0"
+authors = ["Łukasz Niemier <lukasz@niemier.pl>"]
+build = "build.rs"
+
+[lib]
+name = "libucl_sys"
+path = "lib.rs"
+
+[dependencies]
+libc = "*"
+curl-sys = "*"
+
+[build-dependencies]
+pkg-config = "*"
