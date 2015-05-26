@@ -222,15 +222,15 @@ extern {
 
     // Generation functions
     pub fn ucl_object_new() -> *mut ucl_object_t;
-    pub fn ucl_object_typed_new(val: c_uint) -> *mut ucl_object_t;
-    pub fn ucl_object_new_full (typ: ucl_type_t, priority: c_uint) -> *mut ucl_object_t;
-    // UCL_EXTERN ucl_object_t* ucl_object_new_userdata (ucl_userdata_dtor dtor,
+    pub fn ucl_object_new_full(val: ucl_type_t, prio: c_uint) -> *mut ucl_object_t;
+    pub fn ucl_object_typed_new(val: ucl_type_t) -> *mut ucl_object_t;
+    pub fn ucl_object_new_userdata(dtor: ucl_userdata_dtor, emitter: ucl_userdata_emitter) -> *mut ucl_object_t;
     pub fn ucl_object_fromint(val: int64_t) -> *mut ucl_object_t;
     pub fn ucl_object_fromdouble(val: c_double) -> *mut ucl_object_t;
     pub fn ucl_object_frombool(val: bool) -> *mut ucl_object_t;
     pub fn ucl_object_fromstring(val: *const c_char) -> *mut ucl_object_t;
-    pub fn ucl_object_fromlstring(val: *const c_char) -> *mut ucl_object_t;
-    // UCL_EXTERN ucl_object_t * ucl_object_fromstring_common (const char *str, size_t len,
+    pub fn ucl_object_fromlstring(val: *const c_char, len: size_t) -> *mut ucl_object_t;
+    pub fn ucl_object_fromstring_common(val: *const c_char, len: size_t, flags: ucl_string_flags_t) -> *mut ucl_object_t;
 
     // Utility functions
     pub fn ucl_copy_key_trash(obj: *const ucl_object_t) -> *mut c_char;
