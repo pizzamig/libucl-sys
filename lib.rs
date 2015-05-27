@@ -4,6 +4,7 @@
 extern crate libc;
 #[macro_use] extern crate bitflags;
 extern crate curl_sys;
+extern crate openssl_sys;
 
 use libc::{
     c_char,
