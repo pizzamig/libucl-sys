@@ -4,7 +4,6 @@
 extern crate libc;
 #[macro_use] extern crate bitflags;
 extern crate curl_sys;
-extern crate openssl_sys;
 
 use libc::{
     c_char,
@@ -198,6 +197,9 @@ extern {
     pub fn ucl_parser_add_fd(parser: *mut ucl_parser, fd: c_int) -> bool;
     pub fn ucl_parser_add_fd_priority(parser: *mut ucl_parser, fd: c_int, prio: c_uint) -> bool;
     pub fn ucl_parser_clear_error(parser: *mut ucl_parser);
+    pub fn ucl_parser_get_error_code(parser: *mut ucl_parser) -> c_int;
+    pub fn ucl_parser_get_error_column(parser: *mut ucl_parser) -> c_uint;
+    pub fn ucl_parser_get_error_linenum(parser: *mut ucl_parser) -> c_uint;
 
     // Pubkey
     pub fn ucl_pubkey_add(parser: *mut ucl_parser, key: *const c_char, len: size_t) -> bool;
