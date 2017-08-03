@@ -18,8 +18,7 @@ fn main() {
     let mut cmd = Command::new("./configure");
     cmd.current_dir(&src.join("libucl"));
     cmd.arg(&format!("--prefix={}", dst.display()));
-    run(cmd.arg("--enable-urls")
-           .arg("--enable-regex")
+    run(cmd.arg("--enable-regex")
            .arg("--disable-shared")
            .arg("--with-pic"), "configure");
 
