@@ -67,7 +67,7 @@ bitflags! {
 
 bitflags! {
 #[repr(C)]
-    flags ucl_string_flags_t : c_int {
+    pub flags ucl_string_flags_t : c_int {
         const UCL_STRING_RAW = 0x0,
         const UCL_STRING_ESCAPE = 0x1,
         const UCL_STRING_TRIM = 0x2,
