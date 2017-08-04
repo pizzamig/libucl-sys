@@ -2,3 +2,4 @@
 	path = libucl
 	url = git://github.com/vstakhov/libucl.git
 	ignore = dirty
+	branch = 18b97a5742d27324aa122dc3075a44454614c01a
