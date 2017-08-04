@@ -1,4 +1,5 @@
 #![allow(non_camel_case_types)]
+#![allow(improper_ctypes)]
 
 extern crate libc;
 #[macro_use] extern crate bitflags;
