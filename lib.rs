@@ -1,9 +1,7 @@
 #![allow(non_camel_case_types)]
-#![allow(raw_pointer_derive)]
 
 extern crate libc;
 #[macro_use] extern crate bitflags;
-extern crate curl_sys;
 
 use libc::{
     c_char,
