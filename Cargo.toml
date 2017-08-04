@@ -1,6 +1,6 @@
 [package]
 name = "libucl-sys"
-version = "0.1.5"
+version = "0.2.0"
 description = "Low-level bindings to libucl."
 authors = ["Łukasz Niemier <lukasz@niemier.pl>"]
 build = "build.rs"
@@ -13,5 +13,4 @@ path = "lib.rs"
 
 [dependencies]
 libc = "*"
-curl-sys = "*"
-bitflags = "*"
+bitflags = ">=0.9"
