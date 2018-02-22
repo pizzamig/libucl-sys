@@ -80,11 +80,11 @@ bitflags! {
         const UCL_STRING_PARSE_INT = 0x8;
         const UCL_STRING_PARSE_DOUBLE = 0x10;
         const UCL_STRING_PARSE_TIME = 0x20;
-        const UCL_STRING_PARSE_NUMBER = UCL_STRING_PARSE_INT.bits
-            | UCL_STRING_PARSE_DOUBLE.bits
-            | UCL_STRING_PARSE_TIME.bits;
-        const UCL_STRING_PARSE = UCL_STRING_PARSE_BOOLEAN.bits
-            | UCL_STRING_PARSE_NUMBER.bits;
+        const UCL_STRING_PARSE_NUMBER = Self::UCL_STRING_PARSE_INT.bits
+            | Self::UCL_STRING_PARSE_DOUBLE.bits
+            | Self::UCL_STRING_PARSE_TIME.bits;
+        const UCL_STRING_PARSE = Self::UCL_STRING_PARSE_BOOLEAN.bits
+            | Self::UCL_STRING_PARSE_NUMBER.bits;
         const UCL_STRING_PARSE_BYTES = 0x40;
     }
 }
