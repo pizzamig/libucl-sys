@@ -27,7 +27,8 @@ pub enum ucl_error_t {
     UCL_ENESTED,
     UCL_EMACRO,
     UCL_EINTERNAL,
-    UCL_ESSL
+    UCL_ESSL,
+	UCL_EMERGE
 }
 
 #[repr(C)]
@@ -50,7 +51,9 @@ pub enum ucl_emitter {
     UCL_EMIT_JSON = 0,
     UCL_EMIT_JSON_COMPACT,
     UCL_EMIT_CONFIG,
-    UCL_EMIT_YAML
+    UCL_EMIT_YAML,
+	UCL_EMIT_MGSPACK,
+	UCL_EMIT_MAX
 }
 
 bitflags! {
@@ -61,6 +64,9 @@ bitflags! {
         const UCL_PARSER_ZEROCOPY = 0x2;
         const UCL_PARSER_NO_TIME = 0x4;
         const UCL_PARSER_NO_IMPLICIT_ARRAYS = 0x8;
+        const UCL_PARSER_SAVE_COMMENTS = 0x10;
+        const UCL_PARSER_DISABLE_MACRO = 0x20;
+        const UCL_PARSER_NO_FILEVARS = 0x40;
     }
 }
 
@@ -92,6 +98,8 @@ bitflags! {
         const UCL_OBJECT_EPHEMERAL = 0x8;
         const UCL_OBJECT_MULTILINE = 0x10;
         const UCL_OBJECT_MULTIVALUE = 0x20;
+        const UCL_OBJECT_INHERITED = 0x40;
+        const UCL_OBJECT_BINARY = 0x80;
     }
 }
 
