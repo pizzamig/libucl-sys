@@ -13,4 +13,4 @@ path = "lib.rs"
 
 [dependencies]
 libc = "*"
-bitflags = ">=0.9"
+bitflags = "1"
